@@ -140,6 +140,7 @@ window.addEventListener('keypress', event => {
     case 'r':
     case 'g':
     case 'c':
+    case 't':
       mode = 'rgb'
       break
     case '+':

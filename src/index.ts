@@ -153,10 +153,32 @@ window.addEventListener('keypress', event => {
     case '-':
       batch /= 2
       break
+    case 'a':
+      averageGuess()
+      break
     default:
       console.log(event)
   }
 })
+
+function averageGuess() {
+  let sum = 0
+  let count = 0
+  constant_field.forEach((xs, y) =>
+    xs.forEach((value, x) => {
+      if (value !== null) {
+        sum += value
+        count++
+      }
+    }),
+  )
+  const avg = sum / count
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      poisson_field[y][x] = avg
+    }
+  }
+}
 
 function render() {
   let i = 0

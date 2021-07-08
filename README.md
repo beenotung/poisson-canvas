@@ -14,6 +14,7 @@ Inspired from https://mattferraro.dev/posts/poissons-equation
 | Key press R/G/C/T | thermal color (red) mode |
 | Key press + | double batch-update iterations per frame |
 | Key press - | half batch-update iterations per frame |
+| Key press A | Use average of all constants as background value (to speed up coverage) |
 
 ## License
 This is free and open-source software (FOSS) with

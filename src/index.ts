@@ -9,15 +9,19 @@ const MIDDLE_MOUSE = 4
 
 const { floor, round, random, abs, sign } = Math
 
+const W = 200
+const H = 200
+
 const canvas = document.querySelector('#main') as HTMLCanvasElement
 const context = canvas.getContext('2d')
 let rect = canvas.getBoundingClientRect()
+let cellWidth = rect.width / W
+let cellHeight = rect.height / H
 window.addEventListener('resize', () => {
   rect = canvas.getBoundingClientRect()
+  cellWidth = rect.width / W
+  cellHeight = rect.height / H
 })
-
-const W = 200
-const H = 200
 
 let batch = 100_000
 const over_correction_factor = 1.94
@@ -79,8 +83,8 @@ canvas.oncontextmenu = event => {
 
 function draw(event: MouseEvent) {
   const { clientX, clientY } = event
-  const cx = round((clientX / rect.width) * W)
-  const cy = round((clientY / rect.height) * H)
+  const cx = round(((clientX - cellWidth / 1) / rect.width) * W)
+  const cy = round(((clientY - cellHeight / 1) / rect.height) * H)
   if (cx < 0 || cx >= W) return
   if (cy < 0 || cy >= H) return
   constant_field[cy][cx] = paintValue

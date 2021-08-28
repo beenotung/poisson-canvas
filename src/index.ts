@@ -47,6 +47,7 @@ let isMidClick = false
 let isMouseDown = false
 let paintValue = 1
 let paintSize = 1
+let isShowLine = false
 
 canvas.onmousedown = event => {
   isMouseDown = true
@@ -156,6 +157,9 @@ window.addEventListener('keypress', event => {
     case 'a':
       averageGuess()
       break
+    case 'l':
+      isShowLine = !isShowLine
+      break
     default:
       console.log(event)
   }
@@ -180,6 +184,11 @@ function averageGuess() {
   }
 }
 
+const NearGap = 0.005
+function isValueNear(value: number, near: number): boolean {
+  return abs(value - near) <= NearGap
+}
+
 function render() {
   let i = 0
   for (let y = 0; y < H; y++) {
@@ -187,7 +196,22 @@ function render() {
       const value = poisson_field[y][x]
 
       let r, g, b
-      if (mode === 'bw') {
+      if (
+        isShowLine &&
+        (isValueNear(value, 0.1) ||
+          isValueNear(value, 0.2) ||
+          isValueNear(value, 0.3) ||
+          isValueNear(value, 0.4) ||
+          isValueNear(value, 0.5) ||
+          isValueNear(value, 0.6) ||
+          isValueNear(value, 0.7) ||
+          isValueNear(value, 0.8) ||
+          isValueNear(value, 0.9))
+      ) {
+        r = 0
+        g = 0
+        b = 0
+      } else if (mode === 'bw') {
         r = value
         g = value
         b = value

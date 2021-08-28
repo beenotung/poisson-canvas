@@ -10,11 +10,12 @@ Inspired from https://mattferraro.dev/posts/poissons-equation
 |---|---|
 | Mouse Left click | place constant 1 |
 | Mouse Right click | place constant 0 |
-| Key press B/W | black/white mode |
-| Key press R/G/C/T | thermal color (red) mode |
-| Key press + | double batch-update iterations per frame |
-| Key press - | half batch-update iterations per frame |
-| Key press A | Use average of all constants as background value (to speed up coverage) |
+| B/W Key | black/white mode |
+| R/G/C/T Key | thermal color (red) mode |
+| + Key | double batch-update iterations per frame |
+| - Key | half batch-update iterations per frame |
+| A Key | use average of all constants as background value (to speed up coverage) |
+| L Key | toggle show/hide contour line |
 
 ## License
 This is free and open-source software (FOSS) with
